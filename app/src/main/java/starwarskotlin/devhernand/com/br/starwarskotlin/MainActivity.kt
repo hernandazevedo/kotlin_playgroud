@@ -21,17 +21,33 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
         val forecastList = findViewById<RecyclerView>(R.id.forecast_list)
         forecastList.layoutManager = LinearLayoutManager(this)
-        forecastList.adapter = ForecastListAdapter(items)
-        toast("List size ${items.size}")
+//        forecastList.adapter = ForecastListAdapter(items)
 
 
-        doAsync {
-            Request("https://github.com/hernandazevedo/kotlin_tests/blob/master/README.md").run()
-            uiThread { toast("Request Performed") }
 
+//        val doAsync = doAsync {
+//            Request("https://github.com/hernandazevedo/kotlin_tests/blob/master/README.md").run()
+//            uiThread { toast("Request Performed") }
+//
+//        }
+
+//        val forecast = Forecast();
+//        val forecast2 = forecast.copy()
+
+
+        doAsync() {
+            val result = RequestForecastCommand("94043").execute()
+            uiThread {
+                forecastList.adapter = ForecastListAdapter2(result)
+            }
         }
+
+        toast("Hello")
+
     }
 
 
