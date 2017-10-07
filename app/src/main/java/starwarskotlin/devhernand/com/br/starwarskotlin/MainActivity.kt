@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
+import org.jetbrains.anko.uiThread
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,5 +25,14 @@ class MainActivity : AppCompatActivity() {
         forecastList.layoutManager = LinearLayoutManager(this)
         forecastList.adapter = ForecastListAdapter(items)
         toast("List size ${items.size}")
+
+
+        doAsync {
+            Request("https://github.com/hernandazevedo/kotlin_tests/blob/master/README.md").run()
+            uiThread { toast("Request Performed") }
+
+        }
     }
+
+
 }
