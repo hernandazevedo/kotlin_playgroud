@@ -15,4 +15,7 @@ class Extensions {
 
     val ViewGroup.childViews : List<View>
         get() = (0 until childCount).map { getChildAt(it) }
+
+    val View.ctx: Context
+        get() = context
 }

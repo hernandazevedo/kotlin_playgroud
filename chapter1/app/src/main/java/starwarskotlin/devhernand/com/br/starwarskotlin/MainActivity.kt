@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.Forecast
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,11 +43,17 @@ class MainActivity : AppCompatActivity() {
         doAsync() {
             val result = RequestForecastCommand("94043").execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter2(result)
+//                forecastList.adapter = ForecastListAdapter2(result)
+
+                forecastList.adapter = ForecastListAdapter3(result,
+                        object : ForecastListAdapter3.OnItemClickListener{
+                            override fun invoke(forecast: Forecast) {
+                                toast(forecast.date)
+                            }
+                        })
             }
         }
 
-        toast("Hello")
 
     }
 
