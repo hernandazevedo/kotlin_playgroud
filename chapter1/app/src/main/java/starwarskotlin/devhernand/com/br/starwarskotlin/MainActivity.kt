@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import kotlinx.android.synthetic.main.item_forecast.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
@@ -45,12 +46,14 @@ class MainActivity : AppCompatActivity() {
             uiThread {
 //                forecastList.adapter = ForecastListAdapter2(result)
 
-                forecastList.adapter = ForecastListAdapter3(result,
-                        object : ForecastListAdapter3.OnItemClickListener{
-                            override fun invoke(forecast: Forecast) {
-                                toast(forecast.date)
-                            }
-                        })
+//                forecastList.adapter = ForecastListAdapter3(result,
+//                        object : ForecastListAdapter3.OnItemClickListener{
+//                            override fun invoke(forecast: Forecast) {
+//                                toast(forecast.date)
+//                            }
+//                        })
+
+                forecastList.adapter = ForecastListAdapter4(result,{toast(it.date)})
             }
         }
 
