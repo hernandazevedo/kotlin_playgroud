@@ -30,7 +30,9 @@ class MainActivity : AppCompatActivity() {
 //        forecastList.adapter = ForecastListAdapter(items)
 
 
+        Extensions().withMore(""){
 
+        }
 //        val doAsync = doAsync {
 //            Request("https://github.com/hernandazevedo/kotlin_tests/blob/master/README.md").run()
 //            uiThread { toast("Request Performed") }
