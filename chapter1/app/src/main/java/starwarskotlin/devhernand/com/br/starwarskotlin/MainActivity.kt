@@ -8,6 +8,7 @@ import kotlinx.android.synthetic.main.item_forecast.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.Configuration
 import starwarskotlin.devhernand.com.br.starwarskotlin.domain.Forecast
 
 class MainActivity : AppCompatActivity() {
@@ -29,10 +30,13 @@ class MainActivity : AppCompatActivity() {
         forecastList.layoutManager = LinearLayoutManager(this)
 //        forecastList.adapter = ForecastListAdapter(items)
 
+        var conf = Configuration(mapOf(
+                "width" to 1080,
+                "height" to 720,
+                "dp" to 240,
+                "deviceName" to "mydevice"
+        ))
 
-        Extensions().withMore(""){
-
-        }
 //        val doAsync = doAsync {
 //            Request("https://github.com/hernandazevedo/kotlin_tests/blob/master/README.md").run()
 //            uiThread { toast("Request Performed") }

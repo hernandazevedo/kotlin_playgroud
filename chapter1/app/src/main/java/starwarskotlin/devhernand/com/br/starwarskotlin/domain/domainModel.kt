@@ -13,3 +13,10 @@ data class ForecastList(val city: String, val country: String,
 }
 data class Forecast(val date: String, val description: String, val high: Int,
                      val low: Int,val iconUrl : String = "")
+
+class Configuration(map: Map<String, Any?>) {
+    val width: Int by map
+    val height: Int by map
+    val dp: Int by map
+    val deviceName: String by map
+}
