@@ -8,7 +8,7 @@ import android.app.Application
 class App : Application() {
 
     companion object {
-        lateinit var instance: App
+        var instance: App by DelegatesExt.notNullSingleVale()
     }
 
     override fun onCreate() {
