@@ -1,11 +1,11 @@
-package starwarskotlin.devhernand.com.br.starwarskotlin
+package starwarskotlin.devhernand.com.br.starwarskotlin.domain.mappers
 
-import starwarskotlin.devhernand.com.br.starwarskotlin.domain.ForecastList
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.model.ForecastList
 import starwarskotlin.devhernand.com.br.starwarskotlin.data.ForecastResult
 import java.text.DateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
-import starwarskotlin.devhernand.com.br.starwarskotlin.domain.Forecast as DomainModelForecast
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.model.Forecast as DomainModelForecast
 import starwarskotlin.devhernand.com.br.starwarskotlin.data.Forecast as DataModelForecast
 
 /**

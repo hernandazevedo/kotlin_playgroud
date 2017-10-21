@@ -1,4 +1,4 @@
-package starwarskotlin.devhernand.com.br.starwarskotlin
+package starwarskotlin.devhernand.com.br.starwarskotlin.ui.adapters
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -8,30 +8,32 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.find
-import starwarskotlin.devhernand.com.br.starwarskotlin.domain.Forecast
-import starwarskotlin.devhernand.com.br.starwarskotlin.domain.ForecastList
+import starwarskotlin.devhernand.com.br.starwarskotlin.R
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.model.Forecast
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.model.ForecastList
 
 /**
  * Created by Nando on 13/10/2017.
- * Same as ForecastListAdapter3 but now using lambdas
  */
-class ForecastListAdapter4(val weekForecast: ForecastList, private val onItemClickListener: (forecast : Forecast) -> Unit):
-    RecyclerView.Adapter<ForecastListAdapter4.ViewHolder>(){
+public class ForecastListAdapter3(private val weekForecast: ForecastList, private val itemClick: OnItemClickListener):
+    RecyclerView.Adapter<ForecastListAdapter3.ViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ForecastListAdapter4.ViewHolder {
+
+
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent?.context)
                 .inflate(R.layout.item_forecast, parent, false)
-        return ViewHolder(view,onItemClickListener)
+        return ViewHolder(view, itemClick)
     }
 
-    override fun onBindViewHolder(holder: ForecastListAdapter4.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
         holder?.bindForecast(weekForecast[position])
     }
 
     override fun getItemCount(): Int = weekForecast.size
 
 
-    class ViewHolder(view: View, private val itemClick: (forecast : Forecast) -> Unit) : RecyclerView.ViewHolder(view){
+    class ViewHolder(view: View, private val itemClick: OnItemClickListener) : RecyclerView.ViewHolder(view){
 
         private val iconView = view.find<ImageView>(R.id.icon)
         private val dateView = view.find<TextView>(R.id.date)
@@ -49,9 +51,8 @@ class ForecastListAdapter4(val weekForecast: ForecastList, private val onItemCli
                 descriptionView.text = description
                 maxTemperatureView.text = "$high"
                 minTemperatureView.text = "$low"
-                itemView.setOnClickListener {itemClick(this)}
+                itemView.setOnClickListener { itemClick(this) }
             }
-
         }
 
     }
@@ -59,5 +60,4 @@ class ForecastListAdapter4(val weekForecast: ForecastList, private val onItemCli
     interface OnItemClickListener {
         operator fun invoke(forecast: Forecast)
     }
-
 }

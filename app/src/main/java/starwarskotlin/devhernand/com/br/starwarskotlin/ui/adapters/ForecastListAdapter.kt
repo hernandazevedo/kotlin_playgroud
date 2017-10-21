@@ -1,6 +1,5 @@
-package starwarskotlin.devhernand.com.br.starwarskotlin
+package starwarskotlin.devhernand.com.br.starwarskotlin.ui.adapters
 
-import android.support.v7.widget.AppCompatAutoCompleteTextView
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.TextView

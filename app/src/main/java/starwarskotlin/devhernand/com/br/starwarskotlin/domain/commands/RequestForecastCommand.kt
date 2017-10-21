@@ -1,6 +1,8 @@
-package starwarskotlin.devhernand.com.br.starwarskotlin
+package starwarskotlin.devhernand.com.br.starwarskotlin.domain.commands
 
-import starwarskotlin.devhernand.com.br.starwarskotlin.domain.ForecastList
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.mappers.ForecastDataMapper
+import starwarskotlin.devhernand.com.br.starwarskotlin.data.ForecastRequest
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.model.ForecastList
 
 /**
  * Created by Nando on 07/10/2017.

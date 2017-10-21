@@ -1,6 +1,4 @@
-package starwarskotlin.devhernand.com.br.starwarskotlin.domain
-
-import java.text.FieldPosition
+package starwarskotlin.devhernand.com.br.starwarskotlin.domain.model
 
 /**
  * Created by Nando on 07/10/2017.

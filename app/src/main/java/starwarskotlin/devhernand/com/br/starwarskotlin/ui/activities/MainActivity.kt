@@ -1,15 +1,16 @@
-package starwarskotlin.devhernand.com.br.starwarskotlin
+package starwarskotlin.devhernand.com.br.starwarskotlin.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import kotlinx.android.synthetic.main.item_forecast.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
-import starwarskotlin.devhernand.com.br.starwarskotlin.domain.Configuration
-import starwarskotlin.devhernand.com.br.starwarskotlin.domain.Forecast
+import starwarskotlin.devhernand.com.br.starwarskotlin.ui.adapters.ForecastListAdapter4
+import starwarskotlin.devhernand.com.br.starwarskotlin.R
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.commands.RequestForecastCommand
+import starwarskotlin.devhernand.com.br.starwarskotlin.domain.model.Configuration
 
 class MainActivity : AppCompatActivity() {
 
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity() {
 //                            }
 //                        })
 
-                forecastList.adapter = ForecastListAdapter4(result,{toast(it.date)})
+                forecastList.adapter = ForecastListAdapter4(result, { toast(it.date) })
             }
         }
 

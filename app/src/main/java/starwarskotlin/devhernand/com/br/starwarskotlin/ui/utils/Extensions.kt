@@ -1,4 +1,4 @@
-package starwarskotlin.devhernand.com.br.starwarskotlin
+package starwarskotlin.devhernand.com.br.starwarskotlin.ui.utils
 
 import android.content.Context
 import android.view.View

@@ -1,4 +1,4 @@
-package starwarskotlin.devhernand.com.br.starwarskotlin
+package starwarskotlin.devhernand.com.br.starwarskotlin.data
 
 import android.util.Log
 import java.net.URL
