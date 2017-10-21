@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/kotlin_playgroud.iml" filepath="$PROJECT_DIR$/kotlin_playgroud.iml" />
-      <module fileurl="file://$PROJECT_DIR$/chapter1/starwarskotlin.iml" filepath="$PROJECT_DIR$/chapter1/starwarskotlin.iml" />
     </modules>
   </component>
 </project>
