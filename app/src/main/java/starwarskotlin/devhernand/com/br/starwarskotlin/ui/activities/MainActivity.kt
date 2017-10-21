@@ -4,11 +4,13 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
 import org.jetbrains.anko.uiThread
 import starwarskotlin.devhernand.com.br.starwarskotlin.ui.adapters.ForecastListAdapter4
 import starwarskotlin.devhernand.com.br.starwarskotlin.R
+import starwarskotlin.devhernand.com.br.starwarskotlin.data.db.ForecastDbHelper
 import starwarskotlin.devhernand.com.br.starwarskotlin.domain.commands.RequestForecastCommand
 import starwarskotlin.devhernand.com.br.starwarskotlin.domain.model.Configuration
 
@@ -25,11 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
-        val forecastList = findViewById<RecyclerView>(R.id.forecast_list)
         forecastList.layoutManager = LinearLayoutManager(this)
-//        forecastList.adapter = ForecastListAdapter(items)
 
         var conf = Configuration(mapOf(
                 "width" to 1080,
@@ -38,28 +36,9 @@ class MainActivity : AppCompatActivity() {
                 "deviceName" to "mydevice"
         ))
 
-//        val doAsync = doAsync {
-//            Request("https://github.com/hernandazevedo/kotlin_tests/blob/master/README.md").run()
-//            uiThread { toast("Request Performed") }
-//
-//        }
-
-//        val forecast = Forecast();
-//        val forecast2 = forecast.copy()
-
-
         doAsync() {
             val result = RequestForecastCommand("94043").execute()
             uiThread {
-//                forecastList.adapter = ForecastListAdapter2(result)
-
-//                forecastList.adapter = ForecastListAdapter3(result,
-//                        object : ForecastListAdapter3.OnItemClickListener{
-//                            override fun invoke(forecast: Forecast) {
-//                                toast(forecast.date)
-//                            }
-//                        })
-
                 forecastList.adapter = ForecastListAdapter4(result, { toast(it.date) })
             }
         }

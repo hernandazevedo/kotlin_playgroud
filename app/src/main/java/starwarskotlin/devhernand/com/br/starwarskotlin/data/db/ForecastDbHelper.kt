@@ -1,0 +1,50 @@
+package starwarskotlin.devhernand.com.br.starwarskotlin.data.db
+
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import org.jetbrains.anko.db.*
+import starwarskotlin.devhernand.com.br.starwarskotlin.App
+
+/**
+ * Created by Nando on 21/10/2017.
+ */
+class ForecastDbHelper(ctx: Context = App.instance) : ManagedSQLiteOpenHelper(ctx,DB_NAME,null, DB_VERSION) {
+    override fun onCreate(db: SQLiteDatabase) {
+
+        onUpgradeDbVersion(db,null,null)
+
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+//        db.dropTable(CityForecastTable.NAME, true)
+//        db.dropTable(DayForecastTable.NAME, true)
+        onCreate(db)
+    }
+
+    companion object {
+        val DB_NAME = "forecast.db"
+        val DB_VERSION = 1
+        val instance by lazy { ForecastDbHelper() }
+    }
+
+
+    fun onUpgradeDbVersion(db: SQLiteDatabase, oldVersion: Int?, newVersion: Int?){
+
+        if(oldVersion == null || newVersion == null) {
+            db.createTable(CityForecastTable.NAME, true,
+                    CityForecastTable.ID to INTEGER + PRIMARY_KEY,
+                    CityForecastTable.CITY to TEXT,
+                    CityForecastTable.COUNTRY to TEXT)
+
+            db.createTable(DayForecastTable.NAME, true,
+                    DayForecastTable.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+                    DayForecastTable.DATE to INTEGER,
+                    DayForecastTable.DESCRIPTION to TEXT,
+                    DayForecastTable.HIGH to INTEGER,
+                    DayForecastTable.LOW to INTEGER,
+                    DayForecastTable.ICON_URL to TEXT,
+                    DayForecastTable.CITY_ID to INTEGER)
+        }
+
+    }
+}
